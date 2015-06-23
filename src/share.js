@@ -1,9 +1,9 @@
-function Share() {
-  $('body').on('click', '.js-social-share', function() {
+function Share($container) {
+  $container.on('click', '[data-network]', function() {
     var $btn = $(this),
       type = $btn.data('network'),
       appkey = $btn.data('appkey'),
-      params = $btn.closest('.js-social-share-params').data();
+      params = $container.data();
 
     var url = '';
     params['appkey'] = appkey;
@@ -26,7 +26,7 @@ function Share() {
       case 'renren':
         _open(renren(params));
         break;
-      case 'weixin':
+      case 'wechat':
         weixin($btn, params);
         break;
     }

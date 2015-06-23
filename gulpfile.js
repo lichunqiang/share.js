@@ -6,10 +6,13 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename');
 
-
-
-gulp.task('default', function(cb) {
-    return gulp.src('src/*.js')
+gulp.task('build', function(cb) {
+    return gulp.src([
+        'src/utils.js',
+        'src/platform.js',
+        'src/share.js',
+        'src/jquery.share.js'
+      ])
       .pipe(concat('share.js'))
       .pipe(umd())
       .pipe(gulp.dest('dist'))
@@ -17,3 +20,9 @@ gulp.task('default', function(cb) {
       .pipe(rename('share.min.js'))
       .pipe(gulp.dest('dist'));;
 });
+
+gulp.task('watch', function() {
+  gulp.watch('src/*.js', ['build']);
+});
+
+gulp.task('default', ['build']);

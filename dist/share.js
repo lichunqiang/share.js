@@ -7,6 +7,18 @@
     root.Share = factory();
   }
 }(this, function() {
+//build the query string
+function buildUrlQuery(query) {
+  var queryItems = [];
+  for (var q in query) {
+    queryItems.push(q + '=' + encodeURIComponent(query[q] || ''))
+  }
+  return queryItems.join('&');
+}
+//Open a new windows
+function _open(url) {
+  window.open(url, "_blank", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=500")
+}
 
 function weixin($btn, params) {
   if ($('.weixin-share-modal').length == 0) {
@@ -100,12 +112,12 @@ function renren(params) {
   return 'http://widget.renren.com/dialog/share?' + buildUrlQuery(query);
 }
 
-function Share() {
-  $('body').on('click', '.js-social-share', function() {
+function Share($container) {
+  $container.on('click', '[data-network]', function() {
     var $btn = $(this),
       type = $btn.data('network'),
       appkey = $btn.data('appkey'),
-      params = $btn.closest('.js-social-share-params').data();
+      params = $container.data();
 
     var url = '';
     params['appkey'] = appkey;
@@ -128,24 +140,21 @@ function Share() {
       case 'renren':
         _open(renren(params));
         break;
-      case 'weixin':
+      case 'wechat':
         weixin($btn, params);
         break;
     }
   });
 }
 
-function buildUrlQuery(query) {
-  var queryItems = [];
-  for (var q in query) {
-    queryItems.push(q + '=' + encodeURIComponent(query[q] || ''))
-  }
-
-  return queryItems.join('&');
-}
-
-function _open(url) {
-  window.open(url, "_blank", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=500")
+$.fn.share = function () {
+  return this.each(function() {
+    var $container = $(this),
+      instance;
+    //initialize the Share.js
+    instance = new Share($container);
+    $container.data('share.js', instance);
+  });
 }
 
 return Share;
