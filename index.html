@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Share.js</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul id='ShareContainer' data-url="http://lichunqiang.github.io" data-message="欢迎使用Share.js" data-summary="Share.js是一个分享类库" data-picture="https://avatars3.githubusercontent.com/u/2433916?v=3&s=460">
+          <li><a href="javascript:void(0);" data-network="qq">QQ</a></li>
+          <li><a href="javascript:void(0);" data-network="qzone">QZone</a></li>
+          <li><a href="javascript:void(0);" data-network="weibo">Weibo</a></li>
+          <li><a href="javascript:void(0);" data-network="douban">Douban</a></li>
+          <li><a href="javascript:void(0);" data-network="renren">Renren</a></li>
+          <li><a href="javascript:void(0);" data-network="wechat">Wechat</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="dist/share.js"></script>
+  <script type="text/javascript">
+  $('#ShareContainer').share();
+  </script>
+</body>
+</html>
