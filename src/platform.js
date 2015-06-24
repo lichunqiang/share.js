@@ -1,5 +1,5 @@
 function weixin($btn, params) {
-  if ($('.weixin-share-modal').length == 0) {
+  if ($('.weixin-share-modal').length === 0) {
     $('body').append(makeWeixinModal(params));
     var $modal = $('.weixin-share-modal');
     $modal.on('show.bs.modal', function() {
@@ -26,9 +26,9 @@ function makeWeixinModal(params) {
   html += '      </div>';
   html += '      <div class="modal-body">';
   html += '        <p class="weixin-share-loading" style="text-align:center;">正在加载二维码...</p>';
-  html += '        <p class="weixin-share-qrcode"></p>'
+  html += '        <p class="weixin-share-qrcode"></p>';
   html += '        <p class="text-muted"><small>打开微信，点击底部的“发现”，</small><br><small>使用 “扫一扫” 即可将网页分享到我的朋友圈。</small></p>';
-  html += '      </div>'
+  html += '      </div>';
   html += '    </div>';
   html += '  </div>';
   html += '</div>';

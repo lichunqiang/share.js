@@ -6,7 +6,7 @@ function Share() {
       params = $btn.closest('.js-social-share-params').data();
 
     var url = '';
-    params['appkey'] = appkey;
+    params.appkey = appkey;
     switch (type) {
       case 'weibo':
         url = weibo(params);

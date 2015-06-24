@@ -1,11 +1,13 @@
 'use strict'
 
-var gulp = require('gulp'),
-	umd = require('gulp-umd'),
-  concat = require('gulp-concat'),
-  uglify = require('gulp-uglify'),
-  rename = require('gulp-rename'),
-  header = require('gulp-header');
+var gulp = require('gulp')
+	,umd = require('gulp-umd')
+  ,concat = require('gulp-concat')
+  ,uglify = require('gulp-uglify')
+  ,rename = require('gulp-rename')
+  ,header = require('gulp-header')
+  ,jshint = require('gulp-jshint')
+  ,stylish = require('jshint-stylish');
 
 var banner = [
 '/**',
@@ -19,9 +21,13 @@ var banner = [
 
 var pkg = require('./package.json');
 
+gulp.task('hint', function() {
+    return gulp.src('src/*.js')
+      .pipe(jshint())
+      .pipe(jshint.reporter(stylish));
+});
 
-
-gulp.task('default', function(cb) {
+gulp.task('build', function(cb) {
     return gulp.src('src/*.js')
       .pipe(concat('share.js'))
       .pipe(umd())
@@ -31,3 +37,9 @@ gulp.task('default', function(cb) {
       .pipe(rename('share.min.js'))
       .pipe(gulp.dest('dist'));;
 });
+
+gulp.task('watch', function() {
+    gulp.watch('src/*.js', ['hint', 'build']);
+});
+
+gulp.task('default',['hint', 'build']);

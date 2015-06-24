@@ -15,7 +15,7 @@
 }(this, function() {
 
 function weixin($btn, params) {
-  if ($('.weixin-share-modal').length == 0) {
+  if ($('.weixin-share-modal').length === 0) {
     $('body').append(makeWeixinModal(params));
     var $modal = $('.weixin-share-modal');
     $modal.on('show.bs.modal', function() {
@@ -42,9 +42,9 @@ function makeWeixinModal(params) {
   html += '      </div>';
   html += '      <div class="modal-body">';
   html += '        <p class="weixin-share-loading" style="text-align:center;">正在加载二维码...</p>';
-  html += '        <p class="weixin-share-qrcode"></p>'
+  html += '        <p class="weixin-share-qrcode"></p>';
   html += '        <p class="text-muted"><small>打开微信，点击底部的“发现”，</small><br><small>使用 “扫一扫” 即可将网页分享到我的朋友圈。</small></p>';
-  html += '      </div>'
+  html += '      </div>';
   html += '    </div>';
   html += '  </div>';
   html += '</div>';
@@ -114,7 +114,7 @@ function Share() {
       params = $btn.closest('.js-social-share-params').data();
 
     var url = '';
-    params['appkey'] = appkey;
+    params.appkey = appkey;
     switch (type) {
       case 'weibo':
         url = weibo(params);
@@ -144,14 +144,14 @@ function Share() {
 function buildUrlQuery(query) {
   var queryItems = [];
   for (var q in query) {
-    queryItems.push(q + '=' + encodeURIComponent(query[q] || ''))
+    queryItems.push(q + '=' + encodeURIComponent(query[q] || ''));
   }
 
   return queryItems.join('&');
 }
 
 function _open(url) {
-  window.open(url, "_blank", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=500")
+  window.open(url, "_blank", "toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=500");
 }
 
 return Share;
