@@ -1,4 +1,10 @@
-;(function(root, factory) {
+/**
+* share.js - Share to social
+* @version v1.0.0
+* @link https://github.com/lichunqiang/share.js
+* @license MIT
+* @author lichunqiang
+*/;(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define([], factory);
   } else if (typeof exports === 'object') {
