@@ -28,7 +28,12 @@ gulp.task('hint', function() {
 });
 
 gulp.task('build', function(cb) {
-    return gulp.src('src/*.js')
+    return gulp.src([
+        'src/utils.js',
+        'src/platform.js',
+        'src/share.js',
+        'src/jquery.share.js'
+      ])
       .pipe(concat('share.js'))
       .pipe(umd())
       .pipe(header(banner, {pkg: pkg}))
@@ -42,4 +47,4 @@ gulp.task('watch', function() {
     gulp.watch('src/*.js', ['hint', 'build']);
 });
 
-gulp.task('default',['hint', 'build']);
+gulp.task('default', ['build']);
