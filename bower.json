@@ -1,0 +1,26 @@
+{
+  "name": "share.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/lichunqiang/share.js",
+  "authors": [
+    "lichunqiang <light-li@hotmail.com>"
+  ],
+  "description": "Share  your website to social networks",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "Weibo",
+    "wechat",
+    "qq",
+    "douban"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
