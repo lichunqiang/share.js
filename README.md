@@ -32,6 +32,14 @@ $('ul').share();
 * `data-summary` 分享内容，「只对QQ空间、豆瓣、和人人有效」
 * `data-picture` 分享的图像
 
+## 安装
+
+通过Bower安装：
+
+```
+bower install share_zh.js --save
+```
+
 ## License
 
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)
